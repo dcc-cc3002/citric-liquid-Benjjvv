@@ -15,9 +15,14 @@ import model.units.AbstractUnits
 
 class RoboBall() extends AbstractUnits("Robo Ball", 3, -1, 1, -1){
 
-  var actuallyHP = maxHP
+  protected var _actuallyHP: Int = maxHP
   override val KO = isKO()
 
+  override def actuallyHP: Int = _actuallyHP
+
+  override def actuallyHP_(newHP: Int): Unit = {
+    _actuallyHP = math.max(0, newHP)
+  }
 /**
  * funcion que ve si el jugador esta KO
  */

@@ -28,7 +28,7 @@ class PlayerTest extends munit.FunSuite {
 
   test("A player should have correctly set their attributes") {
     assertEquals(player.name, name)
-    assertEquals(player.maxHP, maxHp)
+    assertEquals(player.actuallyHP, maxHp)
     assertEquals(player.ATK, ATK)
     assertEquals(player.DEF, DEF)
     assertEquals(player.EVA, EVA)
@@ -53,16 +53,16 @@ class PlayerTest extends munit.FunSuite {
     assert(player.numDado >= 1 && player.numDado <= 6)
   }
   test("A player should become KO when its actual HP reaches 0") {
-    player.actuallyHP = 0
+    player.actuallyHP_(0)
     assertEquals(player.isKO(), true)
   }
   test("A player should be in recoverFase") {
-    player.actuallyHP = 0
+    player.actuallyHP_(0)
     player.recoveryVal = 10
     assertEquals(player.RecoverFase(), true)
   }
   test("A player should not be in recoverFase") {
-    player.actuallyHP = 0
+    player.actuallyHP_(0)
     player.recoveryVal = 0
     assertEquals(player.RecoverFase(), false)
   }

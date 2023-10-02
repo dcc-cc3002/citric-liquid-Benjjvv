@@ -17,32 +17,63 @@ class Player(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends Abs
   /**
    * Los puntos de vida actuales de la unidad.
    */
-  var actuallyHP: Int = maxHP
+  protected var _actuallyHP: Int = maxHP
+
+  override def actuallyHP: Int = _actuallyHP
+
+  override def actuallyHP_(newHP: Int): Unit = {
+    _actuallyHP = math.max(0, newHP)
+  }
   /**
    * Indica si la unidad está en estado de KO.
    * Por defecto, esta en false.
    */
-  override val KO: Boolean = isKO()
+   override val KO: Boolean = isKO()
   /**
    * chapter que se encuentra el personaje
    * lo iniciamos en 0
    */
-  var chapter: Int = 0
+  protected var _chapter: Int = 0
+
+  def chapter: Int = _chapter
+
+  def chapter_(newChapter: Int): Unit = {
+    _chapter = math.max(0, newChapter)
+  }
+
 
   /**
    * norma del player
    * iniciamos en 1
    */
-  var currentNorma: Int = 1
+  protected var _currentNorma: Int = 1
+
+  def currentNorma: Int = _currentNorma
+
+  def currentNorma_(newNorma: Int): Unit = {
+    _currentNorma = math.max(0, newNorma)
+  }
+
   /**
    * numero de estrellas que posee el personaje
    */
-  var Stars: Int = (chapter / 5) + 1
+  protected var _Stars: Int = 1
+
+  def Stars: Int = _Stars
+  def Stars_(newStars: Int): Unit = {
+    _Stars = math.max(0, newStars)
+  }
 
   /**
    * numero de victorias del personaje
    */
-  var Wins: Int = 0
+  protected var _Wins: Int = 0
+
+  def Wins: Int = _Wins
+
+  def Wins_(newWins: Int): Unit = {
+    _Wins = math.max(0, newWins)
+  }
 
   /**
    * numero de recovery
@@ -86,5 +117,13 @@ class Player(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends Abs
       return false
     }
     return false
+  }
+
+  /** hacer funcion attack */
+
+  def attack(enemy: Player): Unit = {
+    if (!enemy.isKO()) {
+      enemy.actuallyHP_(enemy.actuallyHP - 1)
+    }
   }
 }

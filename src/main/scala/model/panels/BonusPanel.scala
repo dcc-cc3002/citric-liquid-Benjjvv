@@ -24,7 +24,7 @@ class BonusPanel extends Panel {
    def activatePanel(player: Player): Unit = {
      val roll = player.numDado
      val starsGain = roll * player.currentNorma
-     player.Stars += starsGain // Sumar estrellas al jugador
+     player.Stars_(player.Stars+starsGain )// Sumar estrellas al jugador
    }
 
 

@@ -15,14 +15,20 @@ import model.units.AbstractUnits
 
 class Chicken() extends AbstractUnits("Chicken", 3, -1, -1, 1){
 
-  var actuallyHP = maxHP
+  protected var _actuallyHP: Int = maxHP
+
+  override def actuallyHP: Int = _actuallyHP
+
+  override def actuallyHP_(newHP: Int): Unit = {
+    _actuallyHP = math.max(0, newHP)
+  }
   override val KO = isKO()
 
 /**
  * funcion que ve si el jugador esta KO
  */
 def isKO(): Boolean = {
-  if (actuallyHP == 0) {
+  if (_actuallyHP == 0) {
     return true
   }
   return false

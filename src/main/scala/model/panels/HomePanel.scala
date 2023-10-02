@@ -33,9 +33,10 @@ class HomePanel(owner: Player) extends Panel {
     /**
      * player recover 1 point of HP
      */
-    if(player.actuallyHP != player.maxHP){
-      player.actuallyHP += 1
-    }
+    player.actuallyHP_(player.actuallyHP + 1)
+    //if(player._actuallyHP != player.maxHP){
+      //player._actuallyHP += 1
+    //}
     //normaCheck
 
   }

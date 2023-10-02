@@ -22,7 +22,7 @@ trait Panel {
    * In the game, multiple characters might be on the same panel at once, e.g., if multiple players
    * land on the same space.
    */
-  val characters: ArrayBuffer[Player]
+  protected val characters: ArrayBuffer[Player]
 
   /** An array of panels that are directly connected to this one.
    *
@@ -31,7 +31,7 @@ trait Panel {
    *
    * @return a List of Panel instances that are adjacent or connected to this panel.
    */
-  var nextPanels: ArrayBuffer[Panel]
+  protected var nextPanels: ArrayBuffer[Panel]
 
   /** Adds a character to the list of characters currently on this panel.
    *
@@ -39,7 +39,7 @@ trait Panel {
    *
    * @param player The player character to add to this panel.
    */
-  def addCharacter(player: Player): Unit
+  protected def addCharacter(player: Player): Unit
 
   /** Removes a character from the list of characters currently on this panel.
    *
@@ -47,7 +47,7 @@ trait Panel {
    *
    * @param player The player character to remove from this panel.
    */
-  def removeCharacter(player: Player): Unit
+  protected def removeCharacter(player: Player): Unit
 }
 
 

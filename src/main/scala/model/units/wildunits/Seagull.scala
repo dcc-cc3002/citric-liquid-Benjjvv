@@ -15,13 +15,19 @@ import model.units.AbstractUnits
 
 class Seagull() extends AbstractUnits("Seagull", 3, 1, -1, -1){
 
-  var actuallyHP = maxHP
-  override val KO = isKO()
+   protected var _actuallyHP: Int = maxHP
+
+   override def actuallyHP: Int = _actuallyHP
+
+   override def actuallyHP_(newHP: Int): Unit = {
+    _actuallyHP = math.max(0, newHP)
+  }
+   override val KO = isKO()
 
   /**
    * funcion que ve si el jugador esta KO
    */
-  def isKO(): Boolean = {
+   def isKO(): Boolean = {
     if (actuallyHP == 0) {
       return true
     }

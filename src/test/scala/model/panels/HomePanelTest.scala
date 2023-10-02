@@ -34,7 +34,7 @@ class HomePanelTest extends munit.FunSuite{
   test("A player recover 1 hp point in Home Panel") {
     val player1 = new Player("player1", 5, 1, 1, 1)
     val player2 = new Player("player2", 5, 1, 1, 1)
-    player2.actuallyHP = 3
+    player2.actuallyHP_(3)
     val homePanel = new HomePanel(player1)
     homePanel.addCharacter(player2)
     homePanel.activatePanel(player2)

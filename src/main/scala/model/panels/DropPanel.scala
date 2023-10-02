@@ -23,6 +23,6 @@ class DropPanel extends Panel {
   def activatePanel(player: Player): Unit = {
     val roll = player.numDado
     val starsLost = roll * player.currentNorma
-    player.Stars -= starsLost // resta estrellas al jugador
+    player.Stars_(player.Stars - starsLost) // resta estrellas al jugador
   }
 }

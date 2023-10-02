@@ -12,21 +12,26 @@ import scala.util.Random
  * @param DEF stat de defensa
  * @param EVA stat de evasion
  */
-abstract class AbstractUnits(val name: String,
-                             val maxHP: Int,
-                             val ATK: Int,
-                             val DEF: Int,
-                             val EVA: Int) {
+abstract class AbstractUnits(  val name: String,
+                                val maxHP: Int,
+                              val ATK: Int,
+                              val DEF: Int,
+                              val EVA: Int) {
+
   /**
    * Los puntos de vida actuales de la unidad.
    */
-  var actuallyHP: Int
+  protected var _actuallyHP: Int
+  protected def actuallyHP: Int = _actuallyHP
+  protected def actuallyHP_(newHP: Int): Unit ={
+    _actuallyHP = math.max(0,newHP)
+  }
 
   /**
    * Indica si la unidad está en estado de KO.
    * Por defecto, esta en false.
    */
-  val KO: Boolean = false
+  protected val KO: Boolean = false
 
 
 }
