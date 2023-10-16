@@ -22,7 +22,12 @@ class BonusPanelTest extends munit.FunSuite{
     assert(!bonusPanel.characters.contains(player1))
     assert(bonusPanel.characters.contains(player2))
   }
-
-
+  test("Bonus Panel should add stars correctly") {
+    val bonusPanel = new BonusPanel()
+    val player = new Player("Player 1", 1, 1, 1, 1)
+    player.Stars_(5)
+    bonusPanel.apply(player)
+    assert(player.Stars > 5)
+  }
 }
 

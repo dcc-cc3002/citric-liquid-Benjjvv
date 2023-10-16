@@ -10,13 +10,7 @@ import scala.collection.mutable.ArrayBuffer
  * this panel doesn't has any effect on the player
  * the turns ends without news
  */
-class NeutralPanel extends Panel{
-  val characters: ArrayBuffer[Player] = ArrayBuffer.empty
-  var nextPanels: ArrayBuffer[Panel] = ArrayBuffer.empty
-  override def addCharacter(player: Player): Unit={
-    characters += player
-  }
-  override def removeCharacter(player: Player): Unit={
-    characters -= player
-  }
+class NeutralPanel extends AbstractPanel{
+  // no hace fae falta volver a escribir codigo porque esta implementado en la clase abstracta
+
 }

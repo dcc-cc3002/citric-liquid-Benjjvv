@@ -11,17 +11,7 @@ import model.Norma.Norma
  * if is activated -> player recover one point HP and the panel do a NormaCheck
  */
 
-class HomePanel(owner: Player) extends Panel {
-  val characters: ArrayBuffer[Player] = ArrayBuffer.empty //??
-  var nextPanels: ArrayBuffer[Panel] = ArrayBuffer.empty  //??
-
-  def addCharacter(player: Player): Unit = {
-    characters += player
-  }
-
-  def removeCharacter(player: Player): Unit = {
-    characters -= player
-  }
+class HomePanel(owner: Player) extends AbstractPanel {
 
   /** activatePanel
    *
@@ -37,7 +27,7 @@ class HomePanel(owner: Player) extends Panel {
     //if(player._actuallyHP != player.maxHP){
       //player._actuallyHP += 1
     //}
-    //normaCheck
+    //normaCheck3
 
   }
 

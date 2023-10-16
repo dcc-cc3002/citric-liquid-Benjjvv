@@ -33,16 +33,16 @@ class RoboBallTest extends FunSuite {
   }
 
   test("A RoboBall should initially not be KO") {
-    assertEquals(roboball.isKO(), false)
+    assertEquals(roboball.isKO, false)
   }
 
   test("A RoboBall should become KO when its actual HP reaches 0") {
     roboball.actuallyHP_(0)
-    assertEquals(roboball.isKO(), true)
+    assertEquals(roboball.isKO, true)
   }
 
   test("A RoboBall should not be KO when its actual HP is greater than 0") {
     roboball.actuallyHP_(2)
-    assertEquals(roboball.isKO(), false)
+    assertEquals(roboball.isKO, false)
   }
 }

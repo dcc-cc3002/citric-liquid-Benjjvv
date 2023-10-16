@@ -48,6 +48,8 @@ trait Panel {
    * @param player The player character to remove from this panel.
    */
   protected def removeCharacter(player: Player): Unit
+
+  protected def apply(player: Player)
 }
 
 

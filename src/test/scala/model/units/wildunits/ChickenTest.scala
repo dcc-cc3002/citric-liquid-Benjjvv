@@ -33,16 +33,16 @@ class ChickenTest extends FunSuite {
   }
 
   test("A Chicken should initially not be KO") {
-    assertEquals(chicken.isKO(), false)
+    assertEquals(chicken.isKO, false)
   }
 
   test("A Chicken should become KO when its actual HP reaches 0") {
     chicken.actuallyHP_(0)
-    assertEquals(chicken.isKO(), true)
+    assertEquals(chicken.isKO, true)
   }
 
   test("A Chicken should not be KO when its actual HP is greater than 0") {
     chicken.actuallyHP_(2)
-    assertEquals(chicken.isKO(), false)
+    assertEquals(chicken.isKO, false)
   }
 }

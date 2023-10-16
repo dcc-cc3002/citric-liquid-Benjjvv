@@ -34,16 +34,16 @@ class SeagullTest extends FunSuite {
   }
 
   test("A Seagull should initially not be KO") {
-    assertEquals(seagull.isKO(), false)
+    assertEquals(seagull.isKO, false)
   }
 
   test("A Seagull should become KO when its actual HP reaches 0") {
     seagull.actuallyHP_(0)
-    assertEquals(seagull.isKO(), true)
+    assertEquals(seagull.isKO, true)
   }
 
   test("A Seagull should not be KO when its actual HP is greater than 0") {
     seagull.actuallyHP_(2)
-    assertEquals(seagull.isKO(), false)
+    assertEquals(seagull.isKO, false)
   }
 }

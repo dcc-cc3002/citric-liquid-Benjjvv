@@ -34,8 +34,8 @@ class PlayerTest extends munit.FunSuite {
     assertEquals(player.EVA, EVA)
   }
 
-  test("A player have intial Stars "){
-    assertEquals(player.Stars, (player.chapter/5) +1)
+  test("A player have intial Stars ") {
+    assertEquals(player.Stars, (player.chapter / 5) + 1)
   }
   test("A player have start in Norma 1 ") {
     assertEquals(player.currentNorma, 1)
@@ -49,12 +49,12 @@ class PlayerTest extends munit.FunSuite {
   test("A player starts without be KO") {
     assertEquals(player.KO, false)
   }
-  test("A player can roll a dice"){
+  test("A player can roll a dice") {
     assert(player.numDado >= 1 && player.numDado <= 6)
   }
   test("A player should become KO when its actual HP reaches 0") {
     player.actuallyHP_(0)
-    assertEquals(player.isKO(), true)
+    assertEquals(player.isKO, true)
   }
   test("A player should be in recoverFase") {
     player.actuallyHP_(0)
@@ -66,6 +66,53 @@ class PlayerTest extends munit.FunSuite {
     player.recoveryVal = 0
     assertEquals(player.RecoverFase(), false)
   }
-
-
+  test("A player can attack other player") {
+    val player1 = new Player("Player 1", 10, 2, 2, 2)
+    val player2 = new Player("Player 2", 10, 2, 2, 2)
+    player1.attack(player2)
+    //println(player2.actuallyHP) veo con prints si baja la vida de forma distinta por el dado
+    assert(player2.actuallyHP < player2.maxHP)
+  }
+  test("A player can defend from other player") {
+    val player1 = new Player("Player 1", 10, 2, 2, 2)
+    val player2 = new Player("Player 2", 10, 2, 2, 2)
+    player1.defend(player2)
+    //println(player1.actuallyHP) //veo con prints si baja la vida de forma distinta por el dado
+    assert(player1.actuallyHP < player1.maxHP)
+  }
+  test("A player can evade an attack from other player") {
+    val player1 = new Player("Player 1", 10, 2, 2, 100)
+    val player2 = new Player("Player 2", 10, 1, 2, 2)
+    player1.evade(player2)
+    //println(player1.actuallyHP) //veo con prints si baja la vida de forma distinta por el dado
+    assertEquals(player1.actuallyHP, player1.maxHP)
+  }
+  test("A player can not evade an attack from other player") {
+    val player1 = new Player("Player 1", 10, 2, 2, 1)
+    val player2 = new Player("Player 2", 10, 100, 2, 2)
+    player1.evade(player2)
+    //println(player1.actuallyHP) //veo con prints si baja la vida de forma distinta por el dado
+    assertNotEquals(player1.actuallyHP, player1.maxHP)
+  }
+  test("A KO player can´t attack other player") {
+    val player1 = new Player("Player 1", 10, 2, 2, 2)
+    val player2 = new Player("Player 2", 10, 2, 2, 2)
+    player1.actuallyHP_(0)
+    player1.attack(player2)
+    assertEquals(player2.actuallyHP, player2.maxHP)
+  }
+  test("A KO player can´t defend other player") {
+    val player1 = new Player("Player 1", 10, 2, 2, 2)
+    val player2 = new Player("Player 2", 10, 2, 2, 2)
+    player1.actuallyHP_(0)
+    player1.defend(player2)
+    assertEquals(player1.actuallyHP, 0)
+  }
+  test("A KO player can´t evade other player") {
+    val player1 = new Player("Player 1", 10, 2, 2, 2)
+    val player2 = new Player("Player 2", 10, 2, 2, 2)
+    player1.actuallyHP_(0)
+    player1.evade(player2)
+    assertEquals(player2.actuallyHP, player2.maxHP)
+  }
 }

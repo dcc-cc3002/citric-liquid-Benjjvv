@@ -22,16 +22,10 @@ class Seagull() extends AbstractUnits("Seagull", 3, 1, -1, -1){
    override def actuallyHP_(newHP: Int): Unit = {
     _actuallyHP = math.max(0, newHP)
   }
-   override val KO = isKO()
 
   /**
    * funcion que ve si el jugador esta KO
    */
-   def isKO(): Boolean = {
-    if (actuallyHP == 0) {
-      return true
-    }
-    return false
-  }
+
 
 }

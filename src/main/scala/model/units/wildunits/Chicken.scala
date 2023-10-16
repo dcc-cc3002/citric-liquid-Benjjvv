@@ -22,16 +22,10 @@ class Chicken() extends AbstractUnits("Chicken", 3, -1, -1, 1){
   override def actuallyHP_(newHP: Int): Unit = {
     _actuallyHP = math.max(0, newHP)
   }
-  override val KO = isKO()
 
 /**
  * funcion que ve si el jugador esta KO
  */
-def isKO(): Boolean = {
-  if (_actuallyHP == 0) {
-    return true
-  }
-  return false
-}
+
 
 }
