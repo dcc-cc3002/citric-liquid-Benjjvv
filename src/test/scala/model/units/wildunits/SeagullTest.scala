@@ -46,4 +46,7 @@ class SeagullTest extends FunSuite {
     seagull.actuallyHP_(2)
     assertEquals(seagull.isKO, false)
   }
+  test("A Seagull should have 2 stars") {
+    assertEquals(seagull.Stars, 2)
+  }
 }

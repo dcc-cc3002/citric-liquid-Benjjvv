@@ -26,7 +26,8 @@ class DropPanelTest extends munit.FunSuite{
     val dropPanel = new DropPanel()
     val player = new Player("Player 1", 1, 1, 1, 1)
     player.Stars_(5)
-    dropPanel.apply(player)
+    dropPanel.addCharacter(player)
+    dropPanel.apply(dropPanel.characters)
     assert(player.Stars < 5)
   }
 

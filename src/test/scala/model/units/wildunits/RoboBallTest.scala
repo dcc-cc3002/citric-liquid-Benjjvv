@@ -45,4 +45,7 @@ class RoboBallTest extends FunSuite {
     roboball.actuallyHP_(2)
     assertEquals(roboball.isKO, false)
   }
+  test("A RoboBall should have 2 stars") {
+    assertEquals(roboball.Stars, 2)
+  }
 }

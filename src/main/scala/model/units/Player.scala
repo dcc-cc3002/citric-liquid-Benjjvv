@@ -1,7 +1,8 @@
 package cl.uchile.dcc.citric
 package model.units
 
-import scala.util.Random
+import cl.uchile.dcc.citric.model.norma.{Norma, Norma1}
+
 
 /**
  * Esta es una subclase que representa un jugador del juego.
@@ -13,7 +14,7 @@ import scala.util.Random
  * @param EVA stat de evasion
  */
 
-class Player(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends AbstractUnits(name, maxHP, ATK, DEF, EVA) {
+class Player(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends AbstractUnits(name, maxHP, ATK, DEF, EVA) with PlayerTrait {
   /**
    * Los puntos de vida actuales de la unidad.
    */
@@ -21,12 +22,20 @@ class Player(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends Abs
 
   override def actuallyHP: Int = _actuallyHP
 
+  var objNorm: String = "STR"
 
+  def setStarObj: Unit = {
+    objNorm = "STR"
+  }
+
+  def setWinsObj(): Unit = {
+    objNorm = "WIN"
+  }
   /**
    * chapter que se encuentra el personaje
    * lo iniciamos en 0
    */
-  private var _chapter: Int = 0
+  protected var _chapter: Int = 0
 
   def chapter: Int = _chapter
 
@@ -39,24 +48,15 @@ class Player(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends Abs
    * norma del player
    * iniciamos en 1
    */
-  private var _currentNorma: Int = 1
+  protected var _currentNorma: Norma = new Norma1()
 
-  def currentNorma: Int = _currentNorma
+  def currentNorma: Norma = _currentNorma
 
-  def currentNorma_(newNorma: Int): Unit = {
-    _currentNorma = math.max(0, newNorma)
+  def currentNorma_(newNorma: Norma): Unit = {
+    if (newNorma.itsOK(this)) {
+      _currentNorma = newNorma
+    }
   }
-
-  /**
-   * numero de estrellas que posee el personaje
-   */
-  private var _Stars: Int = 1
-
-  def Stars: Int = _Stars
-  def Stars_(newStars: Int): Unit = {
-    _Stars = math.max(0, newStars)
-  }
-
   /**
    * numero de victorias del personaje
    */
@@ -89,9 +89,53 @@ class Player(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends Abs
       }
       return false
     }
-    return false
+    false
   }
 
+  /**
+   * Update unit statistics based on stars and unit type.
+   *
+   * This method updates the statistics of a game unit, which includes increasing the unit's star count by the
+   * specified number of stars and adjusting the unit's wins based on its type. .
+   *
+   * @param stars An integer representing the number of stars to add to the unit's star count.
+   * @param typeUnit A string specifying the type of the unit, which can be "Wild" or "Character."
+   */
+  def updateStats(stars: Int, typeUnit: String): Unit = {
+    // Update the unit's star count by adding the specified stars
+    _Stars += stars
 
+    // Check the type of the unit and adjust wins accordingly
+    if (typeUnit == "Wild") {
+      // Increment wins by 1 for "Wild" type units
+      Wins_(Wins + 1)
+    } else if (typeUnit == "Player") {
+      // Increment wins by 2 for "Character" type units
+      Wins_(Wins + 2)
+    }
+  }
+  /**
+   * Provide statistics for the unit.
+   *
+   * @return A tuple containing the unit's statistics, where the first element is the stars divided by 2, and the
+   * second element is a string representing the unit type ("Player").
+   */
+  def giveStats: (Int, String) = {
+    // Calculate the number of stars divided by 2, and indicate that the unit is of type "Player"
+    (Stars / 2, "Player")
+  }
+  /**
+   * Set values and state for the unit during a game phase.
+   *
+   * It checks if the unit is knocked out (KO) and, if not, it calls the `RecoverFase` method, which is not
+   * defined here, to perform phase-specific actions.
+   */
+  override def setValues: Unit = {
+    // Check if the unit is knocked out (KO)
+    isKO
+
+    // Perform phase-specific actions using the `RecoverFase` method (not defined in this context)
+    RecoverFase()
+  }
 
 }

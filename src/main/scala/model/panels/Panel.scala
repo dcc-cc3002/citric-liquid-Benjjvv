@@ -41,7 +41,7 @@ trait Panel {
    */
   protected def addCharacter(player: Player): Unit
 
-  /** Removes a character from the list of characters currently on this panel.
+  /** Removes a player from the list of players currently on this panel.
    *
    * This might be invoked when a player moves off this panel.
    *
@@ -49,7 +49,32 @@ trait Panel {
    */
   protected def removeCharacter(player: Player): Unit
 
-  protected def apply(player: Player)
+  /**
+   * Add a panel to the collection of next panels.
+   *
+   * This method adds a specified panel to the collection of next panels.
+   *
+   * @param panel The panel to be added.
+   * @return An ArrayBuffer of Panel containing the updated collection of next panels.
+   */
+  protected def addPanel(panel: Panel): ArrayBuffer[Panel]
+
+  /**
+   * Remove a panel from the collection of next panels.
+   *
+   * This method removes a specified panel from the collection of next panels.
+   *
+   * @param panel The panel to be removed.
+   * @return An ArrayBuffer of Panel containing the updated collection of next panels.
+   */
+  protected def removePanel(panel: Panel): ArrayBuffer[Panel]
+
+  /**
+   * Applies panel functionality to players
+   *
+   * @param players An ArrayBuffer of Player representing the players to apply the game logic to.
+   */
+  protected def apply(characters: ArrayBuffer[Player]): Unit
 }
 
 

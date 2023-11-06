@@ -10,15 +10,6 @@ class HomePanelTest extends munit.FunSuite{
 
     val homePanel = new HomePanel(owner)
 
-    homePanel.activatePanel(owner)
-    homePanel.activatePanel(nonOwner)
-
-    // Owner should recover HP and perform Norma Check
-    assert(owner.name == "Owner") /* nonOwner.hpCurrent > 100*/
-    // Non-Owner should recover HP but not perform Norma Check
-    assert(owner.name != "Non-Owner")
-
-    homePanel.addCharacter(owner)
     homePanel.addCharacter(nonOwner)
 
     assert(homePanel.characters.length == 2)
@@ -37,8 +28,20 @@ class HomePanelTest extends munit.FunSuite{
     player2.actuallyHP_(3)
     val homePanel = new HomePanel(player1)
     homePanel.addCharacter(player2)
-    homePanel.activatePanel(player2)
+    homePanel.apply(homePanel.characters)
     assertEquals(player2.actuallyHP, 4)
   }
-
+  test("A player can change his Norma") {
+    val player1 = new Player("player1", 5, 1, 1, 1)
+    player1.Stars_(11)
+    val homePanel = new HomePanel(player1)
+    homePanel.addCharacter(player1)
+    homePanel.apply(homePanel.characters)
+    assertEquals(player1.currentNorma.getLevel,2)
+  }
+  test("You can get the owner of a HomePanel"){
+    val player1 = new Player("player1", 5, 1, 1, 1)
+    val homePanel = new HomePanel(player1)
+    assertEquals(homePanel.getowner,player1)
+  }
 }

@@ -22,6 +22,33 @@ class NeutralPanelTest extends munit.FunSuite{
     assert(!neutralPanel.characters.contains(player1))
     assert(neutralPanel.characters.contains(player2))
   }
+  test("Neutral Panel should add and remove panels correctly"){
+    val neutralPanel = new NeutralPanel()
+    val player1 = new Player("player1", 5, 1, 1, 1)
+    val encounterPanel = new EncounterPanel()
+    val homePanel = new HomePanel(player1)
+    neutralPanel.addPanel(encounterPanel)
+    neutralPanel.addPanel(homePanel)
+    assert(neutralPanel.nextPanels.length==2)
+    assert(neutralPanel.nextPanels.contains(encounterPanel))
+    assert(neutralPanel.nextPanels.contains(homePanel))
 
+    neutralPanel.removePanel(encounterPanel)
+
+    assert(neutralPanel.nextPanels.length == 1)
+    assert(!neutralPanel.nextPanels.contains(encounterPanel))
+    assert(neutralPanel.nextPanels.contains(homePanel))
+
+  }
+  test("Apply should do nothing"){
+    val neutralPanel = new NeutralPanel()
+    val player1 = new Player("player1", 5, 1, 1, 1)
+    neutralPanel.addCharacter(player1)
+    neutralPanel.apply(neutralPanel.characters)
+    assertEquals(player1.maxHP,5)
+    assertEquals(player1.ATK,1)
+    assertEquals(player1.DEF,1)
+    assertEquals(player1.EVA,1)
+  }
 
 }

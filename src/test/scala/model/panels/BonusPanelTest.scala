@@ -3,6 +3,8 @@ package model.panels
 
 import model.units.Player
 
+import scala.collection.mutable.ArrayBuffer
+
 class BonusPanelTest extends munit.FunSuite{
   test("Bonus Panel should add and remove characters correctly") {
     val bonusPanel = new BonusPanel()
@@ -26,7 +28,8 @@ class BonusPanelTest extends munit.FunSuite{
     val bonusPanel = new BonusPanel()
     val player = new Player("Player 1", 1, 1, 1, 1)
     player.Stars_(5)
-    bonusPanel.apply(player)
+    bonusPanel.addCharacter(player)
+    bonusPanel.apply(bonusPanel.characters)
     assert(player.Stars > 5)
   }
 }

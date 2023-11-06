@@ -45,4 +45,11 @@ class ChickenTest extends FunSuite {
     chicken.actuallyHP_(2)
     assertEquals(chicken.isKO, false)
   }
+  test("A Chicken should have 3 stars"){
+    assertEquals(chicken.Stars,3)
+  }
+  test("A Chicken shoul update stats") {
+    chicken.updateStats(2,"Player")
+    assertEquals(chicken.Stars, 5)
+  }
 }
