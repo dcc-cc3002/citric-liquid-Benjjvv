@@ -35,6 +35,9 @@ usar una clase abstracta como tipó y mis funciones en algun momento las usaron 
 
 
 
+## Diagrama de estados
+
+![Diagrama de estados](enunciados/diagrama-estados.png)
 
 
 <div style="text-align:center;">
