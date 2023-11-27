@@ -74,7 +74,8 @@ trait Panel {
    *
    * @param players An ArrayBuffer of Player representing the players to apply the game logic to.
    */
-  protected def apply(characters: ArrayBuffer[Player]): Unit
+  def apply(characters: ArrayBuffer[Player]): Unit
+  def getPlayers: ArrayBuffer[Player]
 }
 
 

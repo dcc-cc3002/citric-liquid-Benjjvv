@@ -2,6 +2,7 @@ package cl.uchile.dcc.citric
 package model.units
 
 import cl.uchile.dcc.citric.model.norma.{Norma, Norma1}
+import cl.uchile.dcc.citric.model.states.{PreGame, State}
 
 
 /**
@@ -15,6 +16,12 @@ import cl.uchile.dcc.citric.model.norma.{Norma, Norma1}
  */
 
 class Player(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends AbstractUnits(name, maxHP, ATK, DEF, EVA) with PlayerTrait {
+
+  //protected var state: State = new PreGame()
+
+  //def setState(s: State): Unit = {
+    //state = s
+  //}
   /**
    * Los puntos de vida actuales de la unidad.
    */

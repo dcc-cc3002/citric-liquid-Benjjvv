@@ -13,6 +13,9 @@ abstract class AbstractPanel extends Panel {
   def addCharacter(player: Player): Unit = {
     characters += player
   }
+  def getPlayers: ArrayBuffer[Player] = {
+    characters
+  }
 
   def removeCharacter(player: Player): Unit = {
     characters -= player
@@ -25,6 +28,6 @@ abstract class AbstractPanel extends Panel {
    def removePanel(panel: Panel): ArrayBuffer[Panel] = {
     nextPanels -= panel
   }
-  protected def apply(players: ArrayBuffer[Player]): Unit
+   def apply(players: ArrayBuffer[Player]): Unit
 
 }

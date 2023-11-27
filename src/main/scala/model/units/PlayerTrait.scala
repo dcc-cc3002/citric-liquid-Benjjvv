@@ -3,8 +3,11 @@ package model.units
 
 import model.norma.Norma
 
+import cl.uchile.dcc.citric.model.states.State
+
 trait PlayerTrait extends Units {
    def isKO: Boolean
+  //protected def state: State
   protected def _chapter: Int
   protected def Wins: Int
   //protected var recovery: Boolean
