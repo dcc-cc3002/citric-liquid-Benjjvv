@@ -21,18 +21,17 @@ class BonusPanel extends AbstractPanel {
     *
     * @param characters An ArrayBuffer of Player representing the player characters to apply the game logic to.
     */
-   override def apply(characters: ArrayBuffer[Player]): Unit = {
-     for (player <- characters) {
-       // Get the player's dice roll
-       val roll = player.numDado
+   override def apply(player: Player): Unit = {
+     // Get the player's dice roll
+     val roll = player.numDado
 
-       // Calculate stars gained based on the dice roll and the current level of the player's norma
-       val starsGain = roll * player.currentNorma.getLevel
+     // Calculate stars gained based on the dice roll and the current level of the player's norma
+     val starsGain = roll * player.currentNorma.getLevel
 
-       // Add the calculated stars to the player's star count
-       player.Stars_(player.Stars + starsGain)
-     }
+     // Add the calculated stars to the player's star count
+     player.Stars_(player.Stars + starsGain)
    }
+
 
 }
 

@@ -13,7 +13,6 @@ import model.norma.Norma
 
 class HomePanel(private val owner: Player) extends AbstractPanel {
   addCharacter(owner)
-
   def getowner: Player = owner
 
   /**
@@ -43,12 +42,11 @@ class HomePanel(private val owner: Player) extends AbstractPanel {
    *
    * @param players An ArrayBuffer of Player representing the player characters to apply the game logic to.
    */
-  override def apply(players: ArrayBuffer[Player]): Unit = {
+  override def apply(player:Player): Unit = {
 
-    for (player <- players) {
-      player.actuallyHP_(player.actuallyHP + 1)
-      normacheck(player)
-    }
+    player.actuallyHP_(player.actuallyHP + 1)
+    normacheck(player)
+
   }
 }
 

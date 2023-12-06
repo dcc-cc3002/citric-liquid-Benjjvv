@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.units.wildunits
 
-import model.units.AbstractUnits
+import model.units.{AbstractUnits, Units}
 
 abstract class AbstractWildUnit(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends AbstractUnits(name, maxHP, ATK, DEF, EVA) with WildUnit  {
 

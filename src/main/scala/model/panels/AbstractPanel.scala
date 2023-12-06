@@ -28,6 +28,9 @@ abstract class AbstractPanel extends Panel {
    def removePanel(panel: Panel): ArrayBuffer[Panel] = {
     nextPanels -= panel
   }
-   def apply(players: ArrayBuffer[Player]): Unit
+  def getNextPanels: ArrayBuffer[Panel] ={
+    nextPanels
+  }
+   def apply(player: Player): Unit
 
 }

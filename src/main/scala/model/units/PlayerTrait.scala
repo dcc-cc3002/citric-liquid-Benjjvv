@@ -3,7 +3,7 @@ package model.units
 
 import model.norma.Norma
 
-import cl.uchile.dcc.citric.model.states.State
+import cl.uchile.dcc.citric.model.states.AbstractState
 
 trait PlayerTrait extends Units {
    def isKO: Boolean
@@ -44,4 +44,5 @@ trait PlayerTrait extends Units {
   //def setVictObj: Unit
 
   def setStarObj: Unit
+
 }

@@ -51,14 +51,12 @@ class EncounterPanel extends AbstractPanel {
    *
    * @param players An ArrayBuffer of Player representing the player characters involved in the combat.
    */
-  private def combat(players: ArrayBuffer[Player]): Unit = {
-    for (player <- players) {
-      // Spawn a random enemy unit
+  private def combat(player:Player): Unit = {
       spawnEnemy()
 
       // Initiate an attack by the spawned enemy unit on the player
       enemyWU.attack(player)
-    }
+
   }
 
   /**
@@ -68,8 +66,8 @@ class EncounterPanel extends AbstractPanel {
    *
    * @param players An ArrayBuffer of Player representing the player characters to apply the game logic to.
    */
-  override def apply(players: ArrayBuffer[Player]): Unit = {
-    combat(players)
+  override def apply(player: Player): Unit = {
+    combat(player)
     }
 
 }

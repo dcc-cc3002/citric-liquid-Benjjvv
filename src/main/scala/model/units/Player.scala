@@ -2,7 +2,7 @@ package cl.uchile.dcc.citric
 package model.units
 
 import cl.uchile.dcc.citric.model.norma.{Norma, Norma1}
-import cl.uchile.dcc.citric.model.states.{PreGame, State}
+import cl.uchile.dcc.citric.model.states.{PreGame, AbstractState}
 
 
 /**
@@ -131,6 +131,7 @@ class Player(name: String, maxHP: Int, ATK: Int, DEF: Int, EVA: Int) extends Abs
     // Calculate the number of stars divided by 2, and indicate that the unit is of type "Player"
     (Stars / 2, "Player")
   }
+
   /**
    * Set values and state for the unit during a game phase.
    *

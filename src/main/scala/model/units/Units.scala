@@ -21,7 +21,9 @@ trait Units {
 
   def updateStats(stars: Int, typeUnit: String): Unit
 
-  def giveStats: (Int, String)
   def setValues: Unit
+
+
+  def giveStats: (Int, String)
 
 }

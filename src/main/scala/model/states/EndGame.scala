@@ -3,6 +3,11 @@ package model.states
 
 import model.GameController
 
-class EndGame(context : GameController) extends State(context) {
+class EndGame(context : GameController) extends AbstractState(context) {
+  override def isEndGame: Boolean = true
+
+  override def handleEvent(): Unit = {
+
+  }
 
 }

@@ -35,7 +35,7 @@ class EncounterPanelTest extends munit.FunSuite{
   val player1 = new Player("Player 1", 6, 1, 1, 1)
 
   encounterPanel.addCharacter(player1)
-  encounterPanel.apply(encounterPanel.characters)
+  encounterPanel.apply(encounterPanel.characters(0))
   assert(player1.actuallyHP <= player1.maxHP)
   }
 }

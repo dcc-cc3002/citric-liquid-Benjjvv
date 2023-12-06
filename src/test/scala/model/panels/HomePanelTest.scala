@@ -28,7 +28,7 @@ class HomePanelTest extends munit.FunSuite{
     player2.actuallyHP_(3)
     val homePanel = new HomePanel(player1)
     homePanel.addCharacter(player2)
-    homePanel.apply(homePanel.characters)
+    homePanel.apply(homePanel.characters(1))
     assertEquals(player2.actuallyHP, 4)
   }
   test("A player can change his Norma") {
@@ -36,7 +36,7 @@ class HomePanelTest extends munit.FunSuite{
     player1.Stars_(11)
     val homePanel = new HomePanel(player1)
     homePanel.addCharacter(player1)
-    homePanel.apply(homePanel.characters)
+    homePanel.apply(homePanel.characters(0))
     assertEquals(player1.currentNorma.getLevel,2)
   }
   test("You can get the owner of a HomePanel"){

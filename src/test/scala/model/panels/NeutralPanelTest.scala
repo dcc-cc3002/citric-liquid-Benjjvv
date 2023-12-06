@@ -44,7 +44,7 @@ class NeutralPanelTest extends munit.FunSuite{
     val neutralPanel = new NeutralPanel()
     val player1 = new Player("player1", 5, 1, 1, 1)
     neutralPanel.addCharacter(player1)
-    neutralPanel.apply(neutralPanel.characters)
+    neutralPanel.apply(neutralPanel.characters(0))
     assertEquals(player1.maxHP,5)
     assertEquals(player1.ATK,1)
     assertEquals(player1.DEF,1)

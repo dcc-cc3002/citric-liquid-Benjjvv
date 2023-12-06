@@ -10,7 +10,7 @@ import scala.collection.mutable.ArrayBuffer
  * this panel doesn't has any effect on the player
  * the turns ends without news
  */
-class NeutralPanel extends AbstractPanel{
+class NeutralPanel extends AbstractPanel with Panel {
   /**
    * Apply panel logic to a array of players.
    *
@@ -19,6 +19,6 @@ class NeutralPanel extends AbstractPanel{
    *
    * @param players An ArrayBuffer of Player representing the player characters to apply the game logic to.
    */
-  override def apply(players: ArrayBuffer[Player]): Unit = null
+  override def apply(player: Player): Unit = null
 
 }

@@ -39,6 +39,35 @@ usar una clase abstracta como tipó y mis funciones en algun momento las usaron 
 
 ![Diagrama de estados](enunciados/diagrama-estados.png)
 
+--------------
+Tarea 3
+--------------
+En esta ultima entrega tome algunas decisiones para mi codigo, por temas de tiempo creo que no cambiare el codigo de mi combate
+pues es funcional.
+
+Para hacer los estados me base en la foto que subieron al foro los auxiliares, en donde elimine el estado Wait, ya que, por 
+como implemente mi combate no es necesario pues por como lo programe el combate no termina hasta que una de las dos unidades 
+que estan combatiendo esten KO.
+
+
+Acerca de lo nuevo, en el controlador cree un tablero por defecto para el juego, este tablero consta con los 5 tipos de paneles
+en donde se repite 4 veces el HomePanel pues cada jugador debe tener el suyo propio (por enunciado, el juego consta de 4 jugadores). Es aqui donde decidi que cada jugador parte
+en su HomePanel respectivo y a lo largo del juego se encontraran distintos paneles. 
+
+No hice inputs, entonces al momento de hacer el Moving asumi que el player no iba a parar en su HomePanel
+por lo que avanzara el numero de paneles que le salga al tirar su dado.
+
+Para RecoverState no se si dejarlo asi ya que mi combate termina con un player ko y es mandado inmediatamente a recover,
+sin embargo, deje el state ya que me sirve para ver si salio True o no en su intento de recuperarse
+
+No pude hacer lo del observer, pero entregue documentado y con 90% de coverage.
+
+
+
+
+
+
+
 
 <div style="text-align:center;">
     <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="Creative Commons License">

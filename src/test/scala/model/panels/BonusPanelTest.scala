@@ -29,7 +29,7 @@ class BonusPanelTest extends munit.FunSuite{
     val player = new Player("Player 1", 1, 1, 1, 1)
     player.Stars_(5)
     bonusPanel.addCharacter(player)
-    bonusPanel.apply(bonusPanel.characters)
+    bonusPanel.apply(bonusPanel.characters(0))
     assert(player.Stars > 5)
   }
 }

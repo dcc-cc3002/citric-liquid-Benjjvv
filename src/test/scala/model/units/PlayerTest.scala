@@ -3,7 +3,6 @@ package model.units
 
 import cl.uchile.dcc.citric.model.units.wildunits.RoboBall
 
-import scala.util.Random
 
 class PlayerTest extends munit.FunSuite {
   /**

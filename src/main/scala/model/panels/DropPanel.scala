@@ -17,10 +17,9 @@ class DropPanel extends AbstractPanel {
    * to be deducted based on their dice roll
    * and the current level of their norma. The calculated stars are subtracted from the player's star count.
    *
-   * @param players An ArrayBuffer of Player representing the player characters to apply the game logic to.
+   * @param players An ArrayBuffer of Player representing the player characters on the panel.
    */
-  override def apply(players: ArrayBuffer[Player]): Unit = {
-    for (player <- players) {
+  override def apply(player: Player): Unit = {
       // Get the player's dice roll
       val roll = player.numDado
 
@@ -30,5 +29,4 @@ class DropPanel extends AbstractPanel {
       // Subtract the calculated stars from the player's star count
       player.Stars_(player.Stars - starsLost)
     }
-  }
 }

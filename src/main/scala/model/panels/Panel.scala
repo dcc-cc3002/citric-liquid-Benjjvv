@@ -39,7 +39,7 @@ trait Panel {
    *
    * @param player The player character to add to this panel.
    */
-  protected def addCharacter(player: Player): Unit
+  def addCharacter(player: Player): Unit
 
   /** Removes a player from the list of players currently on this panel.
    *
@@ -57,7 +57,7 @@ trait Panel {
    * @param panel The panel to be added.
    * @return An ArrayBuffer of Panel containing the updated collection of next panels.
    */
-  protected def addPanel(panel: Panel): ArrayBuffer[Panel]
+  def addPanel(panel: Panel): ArrayBuffer[Panel]
 
   /**
    * Remove a panel from the collection of next panels.
@@ -74,8 +74,9 @@ trait Panel {
    *
    * @param players An ArrayBuffer of Player representing the players to apply the game logic to.
    */
-  def apply(characters: ArrayBuffer[Player]): Unit
+  def apply(player:Player): Unit
   def getPlayers: ArrayBuffer[Player]
+  def getNextPanels: ArrayBuffer[Panel]
 }
 
 
